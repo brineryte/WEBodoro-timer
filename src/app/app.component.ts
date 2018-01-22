@@ -19,7 +19,7 @@ export class AppComponent {
   completed = 0;
 
   current = 0;
-  break = false;
+  break = true;
 
   pomodoro_progress = [ false, false, false, false ];
 
@@ -30,6 +30,16 @@ export class AppComponent {
       .takeWhile( _ => !this.isFinished )
       .do(i => this.current += 1)
       .subscribe();
+  }
+
+  startPomodoro() {
+    this.break = false;
+    this.start();
+  }
+
+  startBreak() {
+    this.break = true;
+    this.start();
   }
 
   finish() {

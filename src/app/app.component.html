@@ -18,7 +18,7 @@
     </div>
     <br>
     <div class="button-group" layout="row">
-      <button mat-raised-button color="primary" class="button" *ngIf="currentVal <= 0" (click)="start()">Start</button>
+      <button mat-raised-button color="primary" class="button" *ngIf="currentVal <= 0" (click)="startPomodoro()">Start</button>
       <button mat-raised-button color="accent" class="button" *ngIf="!isFinished" (click)="finish()">Finish</button>
       <button mat-raised-button color="warn" class="button" (click)="reset()">Reset</button>
     </div>
@@ -26,12 +26,13 @@
   <mat-form-field>
     <input matInput [(ngModel)]="pomodoro_max" placeholder="Pomodoro Duration"/>    
   </mat-form-field> 
-  <mat-checkbox [(ngModel)]="pomodoro_progress[0]" checked="'{{pomodoro_progress[0]}}"></mat-checkbox>&nbsp;
-  <mat-checkbox [(ngModel)]="pomodoro_progress[1]" checked="{{pomodoro_progress[1]}}"></mat-checkbox>&nbsp;
-  <mat-checkbox [(ngModel)]="pomodoro_progress[2]" checked="{{pomodoro_progress[2]}}"></mat-checkbox>&nbsp;
-  <mat-checkbox [(ngModel)]="pomodoro_progress[3]" checked="{{pomodoro_progress[3]}}" color="primary"></mat-checkbox>
-  {{pomodoro_progress}}
+  <mat-checkbox ></mat-checkbox>&nbsp;
+  <mat-checkbox ></mat-checkbox>&nbsp;
+  <mat-checkbox ></mat-checkbox>&nbsp;
+  <mat-checkbox color="primary"></mat-checkbox>
   <mat-form-field>
       <input matInput [(ngModel)]="break_max" placeholder="Break Duration"/>
   </mat-form-field>
+  <button mat-raised-button color="primary" class="button" *ngIf="currentVal <= 0" (click)="startBreak()">Start Break</button>
+  
 </section>
