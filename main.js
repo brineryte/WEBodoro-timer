@@ -9,10 +9,11 @@ function createWindow() {
         height:500,
         minWidth:350,
         minHeight:500,
-        backgroundColor:'#555555'
+        backgroundColor:'#555555',
+        icon: imageFolder + '/mTDuLbg2.png'
     });
-
-    win.setMenu(null);
+console.log(__dirname);
+    //win.setMenu(null);
     win.loadURL(`file://${__dirname}/dist/index.html`);
     win.on( 'closed', function() { win = null } );
 }

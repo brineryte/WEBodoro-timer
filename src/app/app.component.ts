@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/interval';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/takeWhile';
@@ -19,30 +20,40 @@ export class AppComponent {
   completed = 0;
 
   current = 0;
-  break = true;
+  is_break = false;
+
+  subscription;
+  is_paused = false;
 
   pomodoro_progress = [ false, false, false, false ];
 
   start() {
+    this.is_paused = false;
     const interval = Observable.interval(1000);
 
-    interval
+    this.subscription = interval
       .takeWhile( _ => !this.isFinished )
       .do(i => this.current += 1)
       .subscribe();
   }
 
+  pause() {
+    this.is_paused = true;
+    this.subscription.unsubscribe();
+  }
+
   startPomodoro() {
-    this.break = false;
+    this.is_break = false;
     this.start();
   }
 
   startBreak() {
-    this.break = true;
+    this.is_break = true;
     this.start();
   }
 
   finish() {
+    this.is_paused = false;
     this.current = this.maxVal;
   }
 
@@ -51,7 +62,7 @@ export class AppComponent {
   }
 
   get isBreak() {
-    return this.break;
+    return this.is_break;
   }
 
   get maxVal() {

@@ -18,7 +18,8 @@
     </div>
     <br>
     <div class="button-group" layout="row">
-      <button mat-raised-button color="primary" class="button" *ngIf="currentVal <= 0" (click)="startPomodoro()">Start</button>
+      <button mat-raised-button color="primary" class="button" *ngIf="currentVal <= 0 || is_paused" (click)="startPomodoro()">Start Work</button>
+      <button mat-raised-button class="button" *ngIf="currentVal > 0 && !isFinished && !is_paused && !is_break" (click)="pause()">Pause</button>      
       <button mat-raised-button color="accent" class="button" *ngIf="!isFinished" (click)="finish()">Finish</button>
       <button mat-raised-button color="warn" class="button" (click)="reset()">Reset</button>
     </div>
