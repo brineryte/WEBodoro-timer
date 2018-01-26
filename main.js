@@ -12,8 +12,7 @@ function createWindow() {
         backgroundColor:'#555555',
         icon: imageFolder + '/mTDuLbg2.png'
     });
-console.log(__dirname);
-    //win.setMenu(null);
+    win.setMenu(null);
     win.loadURL(`file://${__dirname}/dist/index.html`);
     win.on( 'closed', function() { win = null } );
 }
